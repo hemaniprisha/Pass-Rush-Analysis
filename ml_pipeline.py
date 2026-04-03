@@ -24,7 +24,7 @@ df["rusher_share"]     = df["def_pass_rusher_count"] / (df["def_dl_count"] + df[
 df["blitz"]            = (df["def_pass_rusher_count"] >= 5).astype(int)
 df["late_game"]        = (df["quarter"] >= 4).astype(int)
 
-# ordinal encode formation by frequency -- rare formations collapse to highest index
+# ordinal encode formation by frequency, rare formations collapse to highest index
 fe_map = {v: i for i, v in enumerate(df["offensive_formation_group"].value_counts().index)}
 df["formation_enc"] = df["offensive_formation_group"].map(fe_map).fillna(0)
 
